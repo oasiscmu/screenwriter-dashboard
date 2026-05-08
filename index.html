@@ -576,6 +576,167 @@
     color: var(--text-2);
   }
   .rules-list li { margin-bottom: 2px; }
+
+  /* Schedule tab */
+  .sched-info-card {
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .sched-info-header {
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 0.5px solid var(--border);
+  }
+  .sched-info-title {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+  .sched-info-sub {
+    font-size: 12px;
+    color: var(--text-2);
+  }
+  .sched-info-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px 18px;
+  }
+  .sched-info-item.sched-info-wide {
+    grid-column: span 2;
+  }
+  .sched-info-label {
+    font-size: 11px;
+    color: var(--text-2);
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .sched-info-value {
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  .sched-info-light {
+    color: var(--text-2);
+    font-size: 12px;
+  }
+  .sched-day-card {
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-lg);
+    margin-bottom: 12px;
+    overflow: hidden;
+  }
+  .sched-day-header {
+    padding: 12px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .sched-day-num {
+    font-size: 15px;
+    font-weight: 500;
+  }
+  .sched-day-date {
+    font-size: 12px;
+    opacity: 0.8;
+    margin-top: 2px;
+  }
+  .sched-day-right {
+    text-align: right;
+  }
+  .sched-day-theme {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+  }
+  .sched-day-focus {
+    font-size: 11px;
+    opacity: 0.8;
+    margin-top: 2px;
+  }
+  .sched-activities {
+    padding: 8px 0;
+  }
+  .sched-activity {
+    display: grid;
+    grid-template-columns: 110px 28px 1fr;
+    gap: 12px;
+    align-items: center;
+    padding: 10px 18px;
+    border-bottom: 0.5px solid var(--border);
+    font-size: 13px;
+    transition: background 0.15s;
+  }
+  .sched-activity:last-child { border-bottom: none; }
+  .sched-activity:hover { background: var(--surface-2); }
+  .sched-time {
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    color: var(--text-2);
+    white-space: nowrap;
+  }
+  .sched-icon {
+    font-size: 16px;
+    text-align: center;
+  }
+  .sched-task {
+    line-height: 1.5;
+  }
+  .sched-type-ceremony .sched-task {
+    font-weight: 500;
+  }
+  .sched-type-ceremony {
+    background: rgba(186, 117, 23, 0.06);
+  }
+  .sched-type-submit .sched-task {
+    color: #1D9E75;
+    font-weight: 500;
+  }
+  .sched-type-submit {
+    background: rgba(29, 158, 117, 0.06);
+  }
+  .sched-type-break {
+    color: var(--text-2);
+  }
+  .sched-type-test .sched-task {
+    color: #534AB7;
+    font-weight: 500;
+  }
+  .sched-type-test {
+    background: rgba(127, 119, 221, 0.06);
+  }
+  @media (prefers-color-scheme: dark) {
+    .sched-type-submit .sched-task { color: #9FE1CB; }
+    .sched-type-test .sched-task { color: #CECBF6; }
+    .sched-type-ceremony { background: rgba(186, 117, 23, 0.12); }
+    .sched-type-submit { background: rgba(29, 158, 117, 0.12); }
+    .sched-type-test { background: rgba(127, 119, 221, 0.12); }
+  }
+  .sched-notes-card {
+    background: var(--surface-2);
+    border-radius: var(--radius-md);
+    padding: 14px 18px;
+    margin-top: 1rem;
+  }
+  .sched-notes-title {
+    font-size: 12px;
+    color: var(--text-2);
+    margin-bottom: 6px;
+    font-weight: 500;
+  }
+  .sched-notes-list {
+    margin: 0;
+    padding-left: 18px;
+    font-size: 12px;
+    color: var(--text-2);
+    line-height: 1.7;
+  }
+  .sched-notes-list li { margin-bottom: 2px; }
   .filter-bar {
     display: flex;
     gap: 6px;
@@ -700,6 +861,22 @@
     }
     .unit-bar-name { display: none; }
     .subj-grid { grid-template-columns: 1fr; }
+    .sched-info-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .sched-info-item.sched-info-wide { grid-column: span 2; }
+    .sched-day-header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .sched-day-right { text-align: left; }
+    .sched-activity {
+      grid-template-columns: 90px 24px 1fr;
+      gap: 8px;
+      padding: 10px 14px;
+      font-size: 12px;
+    }
   }
 </style>
 </head>
@@ -724,6 +901,7 @@
     <button class="tab-btn" data-tab="modules">รายโมดูล</button>
     <button class="tab-btn" data-tab="books">ตำรา</button>
     <button class="tab-btn" data-tab="matrix">เมทริกซ์</button>
+    <button class="tab-btn" data-tab="schedule">กำหนดการอบรมระดับ 4</button>
   </div>
 
   <div id="panel-journey" class="panel active">
@@ -752,6 +930,13 @@
   <div id="panel-matrix" class="panel">
     <div class="panel-hint">ตารางเชื่อมโยง วัน → โมดูล → หน่วยสมรรถนะ → Deliverable → ตำรา</div>
     <div id="matrix-grid"></div>
+  </div>
+
+  <div id="panel-schedule" class="panel">
+    <div class="panel-hint">กำหนดการอบรมจริงครั้งที่ 1 — คลิกแต่ละวันเพื่อดูรายละเอียดกิจกรรม</div>
+    <div id="schedule-info"></div>
+    <div id="schedule-days"></div>
+    <div id="schedule-notes"></div>
   </div>
 
   <footer>
@@ -817,6 +1002,92 @@ const modules = [
   }
 ];
 
+const schedule = {
+  info: {
+    round: "ครั้งที่ 1",
+    dateRange: "9 – 13 พฤษภาคม 2569",
+    dates: "วันเสาร์ที่ 9 – วันพุธที่ 13 พฤษภาคม 2569",
+    duration: "5 วันต่อเนื่อง",
+    time: "08:30 – 16:00 น.",
+    register: "ลงทะเบียน 08:30 – 09:00 น. ทุกวัน",
+    venue: "ห้องสัมมนากลาง สถาบันเอเชียตะวันออกศึกษา",
+    venueDetail: "มหาวิทยาลัยธรรมศาสตร์ ศูนย์รังสิต",
+    capacity: "ไม่น้อยกว่า 20 คน/รุ่น",
+    organizer: "TU-RAC × สคช.",
+    organizerFull: "สถาบันวิจัยและให้คำปรึกษาแห่งมหาวิทยาลัยธรรมศาสตร์",
+    coordinator: "ผศ.ดร.กนกวรรณ อู่ทองทรัพย์",
+    phone: "086-671-4660",
+    project: "โครงการสร้างต้นแบบบุคลากร (Talented) อาชีพนักเขียนบท",
+    fiscalYear: "ปีงบประมาณ 2569"
+  },
+  days: [
+    {
+      num: 1, dayThai: "เสาร์", date: "9 พฤษภาคม 2569", theme: "DISCOVER",
+      themeFocus: "Core Idea + เตรียมข้อมูล", colorKey: 0,
+      activities: [
+        { time: "08:30–09:00", task: "ลงทะเบียน รับเอกสาร และ Pre-test", type: "register" },
+        { time: "09:00–09:15", task: "พิธีเปิดโครงการ โดย ผอ. สคช.", type: "ceremony" },
+        { time: "09:15–10:00", task: "Welcome & Course Overview + Portfolio Map (6 Deliverables)", type: "lecture" },
+        { time: "10:00–12:30", task: "โมดูล 1 — Core Idea (Theme / Concept / Premise / Genre / Mood / Logline)", type: "lecture" },
+        { time: "12:30–13:30", task: "พักรับประทานอาหารกลางวัน", type: "break" },
+        { time: "13:30–14:30", task: "Workshop 1.A — From Theme to Logline", type: "workshop" },
+        { time: "14:30–16:00", task: "โมดูล 1.2 เตรียมข้อมูล + Workshop 1.B Research Sprint", type: "workshop" },
+        { time: "16:00", task: "ส่ง Deliverable D1 + D2: Core Idea Sheet + Research Brief", type: "submit" }
+      ]
+    },
+    {
+      num: 2, dayThai: "อาทิตย์", date: "10 พฤษภาคม 2569", theme: "DEVELOP I",
+      themeFocus: "Plot + Character", colorKey: 1,
+      activities: [
+        { time: "08:30–09:00", task: "ลงทะเบียน + ทบทวนวันที่ 1", type: "register" },
+        { time: "09:00–12:30", task: "โมดูล 2 — Plot Structure (Three-Act / Hero's Journey / Turning Points) + Workshop 2.A", type: "lecture" },
+        { time: "12:30–13:30", task: "พักรับประทานอาหารกลางวัน", type: "break" },
+        { time: "13:30–16:00", task: "Character Creation (Profile 4 มิติ / Arc / Want-Need / Conflict) + Workshop 2.B", type: "workshop" },
+        { time: "16:00", task: "ส่ง Deliverable D3: Plot Outline + Character Bible", type: "submit" }
+      ]
+    },
+    {
+      num: 3, dayThai: "จันทร์", date: "11 พฤษภาคม 2569", theme: "DEVELOP II",
+      themeFocus: "Treatment + Scenario", colorKey: 2,
+      activities: [
+        { time: "08:30–09:00", task: "ลงทะเบียน + ทบทวนวันที่ 2", type: "register" },
+        { time: "09:00–12:30", task: "โมดูล 3 — Treatment (Beat / Scene / Sequence) + Workshop 3.A Writing Sprint", type: "lecture" },
+        { time: "12:30–13:30", task: "พักรับประทานอาหารกลางวัน", type: "break" },
+        { time: "13:30–16:00", task: "Scenario Format + Workshop 3.B Scenario Mapping + Peer Review", type: "workshop" },
+        { time: "16:00", task: "ส่ง Deliverable D4: Treatment + D5: Scenario", type: "submit" }
+      ]
+    },
+    {
+      num: 4, dayThai: "อังคาร", date: "12 พฤษภาคม 2569", theme: "DELIVER",
+      themeFocus: "Format + Full Scene", colorKey: 3,
+      activities: [
+        { time: "08:30–09:00", task: "ลงทะเบียน + ทบทวนวันที่ 3", type: "register" },
+        { time: "09:00–12:30", task: "โมดูล 4 — Format Standard (TV / Film / Stage) + Dialogue & Visual Language", type: "lecture" },
+        { time: "12:30–13:30", task: "พักรับประทานอาหารกลางวัน", type: "break" },
+        { time: "13:30–16:00", task: "Workshop 4.B — Full Scene Writing (Drafting → Revising) + Peer Review", type: "workshop" },
+        { time: "16:00", task: "ส่ง Deliverable D6: Full Scene Script", type: "submit" }
+      ]
+    },
+    {
+      num: 5, dayThai: "พุธ", date: "13 พฤษภาคม 2569", theme: "DEPLOY",
+      themeFocus: "Pitch + Final + พิธีปิด", colorKey: 4,
+      activities: [
+        { time: "08:30–09:00", task: "ลงทะเบียน + Portfolio Final Check (ตรวจ Deliverable 6 ชิ้น)", type: "register" },
+        { time: "09:00–10:45", task: "โมดูล 5 — Pitch Structure 6 ขั้น + Workshop 5.A Pitch Practice", type: "lecture" },
+        { time: "10:45–12:30", task: "Workshop 5.B Part 1 — Final Presentation รายบุคคล (กลุ่มแรก)", type: "workshop" },
+        { time: "12:30–13:30", task: "พักรับประทานอาหารกลางวัน", type: "break" },
+        { time: "13:30–14:30", task: "Workshop 5.B Part 2 — Final Presentation รายบุคคล (กลุ่มสอง)", type: "workshop" },
+        { time: "14:45–15:15", task: "Post-test + Reflection Sheet + แบบประเมินความพึงพอใจ", type: "test" },
+        { time: "15:15–16:00", task: "พิธีปิดโครงการ + มอบประกาศนียบัตร + ถ่ายภาพหมู่ + แนะนำเส้นทาง สคช. ระดับ 5", type: "ceremony" }
+      ]
+    }
+  ],
+  notes: [
+    "กำหนดการรายวันสามารถปรับเปลี่ยนลำดับกิจกรรมได้ตามความเหมาะสม",
+    "★ = กิจกรรมที่ขอเรียนเชิญ ผอ. สคช. เข้าร่วม"
+  ]
+};
+
 const passingCriteria = {
   conditions: [
     { label: "เข้าร่วมการอบรม", value: "≥ 80%", note: "ทั้งภาคทฤษฎีและปฏิบัติ" },
@@ -837,7 +1108,7 @@ const passingCriteria = {
   ],
   tests: {
     pretest: {
-      day: "วันที่ 1 · 09:00-09:30",
+      day: "วันที่ 1 · 08:30-09:00",
       items: "20 ข้อปรนัย",
       time: "30 นาที",
       score: "30 คะแนน (ข้อละ 1.5)",
@@ -846,7 +1117,7 @@ const passingCriteria = {
       isPass: false
     },
     posttest: {
-      day: "วันที่ 5 · 15:45-16:15",
+      day: "วันที่ 5 · 14:45-15:15",
       items: "20 ปรนัย + 1 อัตนัย",
       time: "60 นาที (ปรนัย 40 + อัตนัย 20)",
       score: "30 คะแนน (ปรนัย 20 + อัตนัย 10)",
@@ -1196,6 +1467,103 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
     document.getElementById('panel-' + btn.dataset.tab).classList.add('active');
   });
 });
+
+const scheduleInfo = document.getElementById('schedule-info');
+scheduleInfo.innerHTML = `
+  <div class="sched-info-card">
+    <div class="sched-info-header">
+      <div class="sched-info-title">📅 ${schedule.info.project}</div>
+      <div class="sched-info-sub">${schedule.info.organizer} · ${schedule.info.fiscalYear}</div>
+    </div>
+    <div class="sched-info-grid">
+      <div class="sched-info-item">
+        <div class="sched-info-label">รอบที่</div>
+        <div class="sched-info-value">${schedule.info.round}</div>
+      </div>
+      <div class="sched-info-item">
+        <div class="sched-info-label">วันที่</div>
+        <div class="sched-info-value">${schedule.info.dates}</div>
+      </div>
+      <div class="sched-info-item">
+        <div class="sched-info-label">เวลา</div>
+        <div class="sched-info-value">${schedule.info.time}</div>
+      </div>
+      <div class="sched-info-item">
+        <div class="sched-info-label">ระยะเวลา</div>
+        <div class="sched-info-value">${schedule.info.duration}</div>
+      </div>
+      <div class="sched-info-item sched-info-wide">
+        <div class="sched-info-label">📍 สถานที่</div>
+        <div class="sched-info-value">${schedule.info.venue}<br><span class="sched-info-light">${schedule.info.venueDetail}</span></div>
+      </div>
+      <div class="sched-info-item">
+        <div class="sched-info-label">👥 ผู้เข้าอบรม</div>
+        <div class="sched-info-value">${schedule.info.capacity}</div>
+      </div>
+      <div class="sched-info-item">
+        <div class="sched-info-label">📞 ผู้ประสานงาน</div>
+        <div class="sched-info-value">${schedule.info.coordinator}<br><span class="sched-info-light">${schedule.info.phone}</span></div>
+      </div>
+    </div>
+  </div>
+`;
+
+const typeIcons = {
+  register: "📋",
+  ceremony: "⭐",
+  lecture: "📚",
+  workshop: "🛠️",
+  break: "🍽️",
+  submit: "📤",
+  test: "📝"
+};
+const typeLabels = {
+  register: "ลงทะเบียน",
+  ceremony: "พิธี",
+  lecture: "บรรยาย",
+  workshop: "Workshop",
+  break: "พัก",
+  submit: "ส่งงาน",
+  test: "สอบ"
+};
+
+const scheduleDaysEl = document.getElementById('schedule-days');
+schedule.days.forEach(d => {
+  const dayInfo = days[d.colorKey];
+  const c = getColors(dayInfo.color);
+  const card = document.createElement('div');
+  card.className = 'sched-day-card';
+  const activitiesHtml = d.activities.map(a => `
+    <div class="sched-activity sched-type-${a.type}">
+      <div class="sched-time">${a.time}</div>
+      <div class="sched-icon" title="${typeLabels[a.type]}">${typeIcons[a.type]}</div>
+      <div class="sched-task">${a.task}</div>
+    </div>
+  `).join('');
+  card.innerHTML = `
+    <div class="sched-day-header" style="background: ${c.bg}; color: ${c.text};">
+      <div class="sched-day-left">
+        <div class="sched-day-num">วันที่ ${d.num} · ${d.dayThai}</div>
+        <div class="sched-day-date">${d.date}</div>
+      </div>
+      <div class="sched-day-right">
+        <div class="sched-day-theme">${d.theme}</div>
+        <div class="sched-day-focus">${d.themeFocus}</div>
+      </div>
+    </div>
+    <div class="sched-activities">${activitiesHtml}</div>
+  `;
+  scheduleDaysEl.appendChild(card);
+});
+
+const scheduleNotesEl = document.getElementById('schedule-notes');
+const notesHtml = schedule.notes.map(n => `<li>${n}</li>`).join('');
+scheduleNotesEl.innerHTML = `
+  <div class="sched-notes-card">
+    <div class="sched-notes-title">ⓘ หมายเหตุ</div>
+    <ul class="sched-notes-list">${notesHtml}</ul>
+  </div>
+`;
 </script>
 </body>
 </html>
