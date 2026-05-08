@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>หลักสูตรนักเขียนบท ระดับ 4 — Dashboard</title>
+<meta name="description" content="แดชบอร์ดภาพรวมหลักสูตรนักเขียนบทระดับ 4 — TPQI x TU-RAC">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fafaf7;
+    --surface: #ffffff;
+    --surface-2: #f4f3ee;
+    --border: rgba(0,0,0,0.1);
+    --border-strong: rgba(0,0,0,0.2);
+    --text: #1a1a1a;
+    --text-2: #666;
+    --text-3: #999;
+    --accent: #1a1a1a;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a1a1a;
+      --surface: #242422;
+      --surface-2: #2c2c2a;
+      --border: rgba(255,255,255,0.1);
+      --border-strong: rgba(255,255,255,0.2);
+      --text: #f0f0ed;
+      --text-2: #a0a09c;
+      --text-3: #6e6e6a;
+      --accent: #f0f0ed;
+    }
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'IBM Plex Sans Thai', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+  }
+  .header {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 0.5px solid var(--border);
+  }
+  .header h1 {
+    font-size: 28px;
+    font-weight: 500;
+    margin: 0 0 6px;
+  }
+  .header .sub {
+    font-size: 14px;
+    color: var(--text-2);
+  }
+  .header .badge {
+    display: inline-block;
+    background: var(--surface-2);
+    padding: 3px 10px;
+    border-radius: var(--radius-md);
+    font-size: 12px;
+    color: var(--text-2);
+    margin-top: 8px;
+  }
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 1.5rem;
+  }
+  .stat {
+    background: var(--surface-2);
+    border-radius: var(--radius-md);
+    padding: 1rem 1.25rem;
+  }
+  .stat .label {
+    font-size: 13px;
+    color: var(--text-2);
+    margin-bottom: 4px;
+  }
+  .stat .value {
+    font-size: 28px;
+    font-weight: 500;
+  }
+  .tabs {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 1.5rem;
+    border-bottom: 0.5px solid var(--border);
+    overflow-x: auto;
+  }
+  .tab-btn {
+    border: none;
+    background: transparent;
+    padding: 10px 16px;
+    font-size: 14px;
+    font-family: inherit;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    color: var(--text-2);
+    margin-bottom: -1px;
+    white-space: nowrap;
+    transition: color 0.15s;
+  }
+  .tab-btn:hover { color: var(--text); }
+  .tab-btn.active {
+    color: var(--text);
+    border-bottom-color: var(--accent);
+  }
+  .panel { display: none; }
+  .panel.active { display: block; }
+  .panel-hint {
+    font-size: 13px;
+    color: var(--text-2);
+    margin-bottom: 14px;
+  }
+  .timeline {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+    margin-bottom: 1rem;
+  }
+  .day-card {
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 12px 8px;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.15s;
+    background: var(--surface);
+  }
+  .day-card:hover {
+    border-color: var(--border-strong);
+  }
+  .day-card .day-num {
+    font-size: 11px;
+    color: var(--text-2);
+    margin-bottom: 4px;
+  }
+  .day-card .day-theme {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 2px;
+  }
+  .day-card .day-thai {
+    font-size: 11px;
+    color: var(--text-2);
+  }
+  .detail-card {
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    min-height: 240px;
+  }
+  .detail-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .detail-tag {
+    font-size: 12px;
+    margin-bottom: 4px;
+  }
+  .detail-title {
+    font-size: 18px;
+    font-weight: 500;
+  }
+  .detail-quote {
+    font-style: italic;
+    color: var(--text-2);
+    border-left: 2px solid;
+    padding: 8px 0 8px 14px;
+    margin: 14px 0;
+    font-size: 14px;
+  }
+  .detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin-top: 14px;
+  }
+  .detail-grid h4 {
+    font-size: 12px;
+    color: var(--text-2);
+    margin: 0 0 8px;
+    font-weight: 400;
+  }
+  .detail-grid ul {
+    margin: 0 0 14px;
+    padding-left: 18px;
+    font-size: 13px;
+  }
+  .detail-grid li { margin-bottom: 4px; }
+  .badge-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+  .badge {
+    font-size: 11px;
+    background: var(--surface-2);
+    padding: 4px 9px;
+    border-radius: var(--radius-md);
+  }
+  .module-card, .book-card, .matrix-card {
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.25rem;
+    margin-bottom: 10px;
+  }
+  .module-head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .module-num {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    font-size: 15px;
+  }
+  .module-title {
+    font-size: 16px;
+    font-weight: 500;
+  }
+  .section-label {
+    font-size: 12px;
+    color: var(--text-2);
+    margin-bottom: 4px;
+    margin-top: 12px;
+  }
+  .section-text {
+    font-size: 14px;
+    line-height: 1.7;
+  }
+  .connect-box {
+    margin-top: 6px;
+    padding: 10px 14px;
+    border-radius: var(--radius-md);
+    font-size: 13px;
+    line-height: 1.7;
+  }
+  .filter-bar {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+  }
+  .filter-btn {
+    border: 0.5px solid var(--border);
+    background: transparent;
+    padding: 6px 14px;
+    border-radius: var(--radius-md);
+    font-size: 13px;
+    font-family: inherit;
+    cursor: pointer;
+    color: var(--text);
+    transition: all 0.15s;
+  }
+  .filter-btn:hover { border-color: var(--border-strong); }
+  .filter-btn.active {
+    background: var(--surface);
+    border-color: var(--border-strong);
+  }
+  .book-card {
+    padding: 14px 16px;
+    margin-bottom: 8px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .book-info { flex: 1; min-width: 0; }
+  .book-head {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 4px;
+    flex-wrap: wrap;
+  }
+  .book-name {
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .book-cat-pill {
+    font-size: 10px;
+    padding: 3px 8px;
+    border-radius: var(--radius-md);
+  }
+  .book-title {
+    font-size: 12px;
+    color: var(--text-2);
+    margin-bottom: 6px;
+    font-style: italic;
+  }
+  .book-role {
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  .book-uses {
+    font-size: 11px;
+    color: var(--text-2);
+    white-space: nowrap;
+    padding-top: 2px;
+  }
+  .matrix-row { padding: 14px 16px; }
+  .matrix-head {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+  }
+  .matrix-day-pill {
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: var(--radius-md);
+    font-weight: 500;
+  }
+  .matrix-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    font-size: 13px;
+  }
+  .matrix-grid > div > div:first-child {
+    color: var(--text-2);
+    margin-bottom: 4px;
+    font-size: 12px;
+  }
+  footer {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 0.5px solid var(--border);
+    font-size: 12px;
+    color: var(--text-3);
+    text-align: center;
+  }
+  @media (max-width: 720px) {
+    .container { padding: 1.25rem 1rem 3rem; }
+    .header h1 { font-size: 22px; }
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    .timeline { grid-template-columns: repeat(5, 1fr); gap: 4px; }
+    .day-card { padding: 8px 4px; }
+    .day-card .day-theme { font-size: 11px; }
+    .detail-grid { grid-template-columns: 1fr; }
+    .matrix-grid { grid-template-columns: 1fr; }
+    .stat .value { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header class="header">
+    <h1>หลักสูตรนักเขียนบท ระดับ 4</h1>
+    <div class="sub">5 วัน · 30 ชั่วโมง · 6 ผลงาน · 8 หน่วยสมรรถนะ · 19 ตำราอ้างอิง</div>
+    <span class="badge">TPQI × TU-RAC · มาตรฐานอาชีพ พ.ศ. 2567</span>
+  </header>
+
+  <div class="stats">
+    <div class="stat"><div class="label">โมดูล</div><div class="value">5</div></div>
+    <div class="stat"><div class="label">ผลงาน</div><div class="value">6</div></div>
+    <div class="stat"><div class="label">หน่วยสมรรถนะ</div><div class="value">8</div></div>
+    <div class="stat"><div class="label">ตำรา</div><div class="value">19</div></div>
+  </div>
+
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="journey">เส้นทาง 5 วัน</button>
+    <button class="tab-btn" data-tab="modules">รายโมดูล</button>
+    <button class="tab-btn" data-tab="books">ตำรา</button>
+    <button class="tab-btn" data-tab="matrix">เมทริกซ์</button>
+  </div>
+
+  <div id="panel-journey" class="panel active">
+    <div class="panel-hint">คลิกแต่ละวันเพื่อดูเนื้อหา ตำรา และผลงานที่ต้องส่ง</div>
+    <div id="timeline" class="timeline"></div>
+    <div id="day-detail" class="detail-card"></div>
+  </div>
+
+  <div id="panel-modules" class="panel">
+    <div class="panel-hint">เลือกโมดูลเพื่อดูแก่นความคิดและวิธีเชื่อมโยงไปโมดูลถัดไป</div>
+    <div id="modules-grid"></div>
+  </div>
+
+  <div id="panel-books" class="panel">
+    <div class="panel-hint">คัดกรองตำราตามประเภทและดูว่าใช้ในโมดูลไหน</div>
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="all">ทั้งหมด (19)</button>
+      <button class="filter-btn" data-filter="core">ตำราหลัก</button>
+      <button class="filter-btn" data-filter="format">เฉพาะรูปแบบ</button>
+      <button class="filter-btn" data-filter="classic">คลาสสิก</button>
+      <button class="filter-btn" data-filter="support">เสริม</button>
+    </div>
+    <div id="books-grid"></div>
+  </div>
+
+  <div id="panel-matrix" class="panel">
+    <div class="panel-hint">ตารางเชื่อมโยง วัน → โมดูล → หน่วยสมรรถนะ → Deliverable → ตำรา</div>
+    <div id="matrix-grid"></div>
+  </div>
+
+  <footer>
+    เอกสารประกอบการอบรม v1.1 · TPQI × TU-RAC<br>
+    หลักสูตรฝึกอบรมตามมาตรฐานอาชีพ สาขาวิชาชีพอุตสาหกรรมบันเทิง สาขาการเขียนบท
+  </footer>
+
+</div>
+
+<script>
+const days = [
+  { id: 1, theme: "DISCOVER", thai: "ค้นพบ", color: { bg: "#EEEDFE", text: "#3C3489", textSub: "#534AB7", border: "#7F77DD", bgDark: "#2C2459", textDark: "#CECBF6" }, desc: "สร้างแนวความคิดหลัก + เตรียมข้อมูล", focus: "ก่อนเขียนบทแม้แต่คำเดียว ต้องรู้ว่าเรื่องนี้สัญญาอะไรกับผู้ชม", units: ["10101", "10102"], deliverables: ["Core Idea Sheet", "Research Brief"], topics: ["Theme — แก่นเรื่อง", "Concept — มุมมองเฉพาะ", "Premise (สูตร Tabb)", "Genre + Mood/Tone", "Logline 30 วินาที", "Research 4 ประเภท"], books: ["Tabb (2014)", "Alessandra (2010)", "Krevolin (2003)", "Lerch (1999)", "Johnson (2009)"] },
+  { id: 2, theme: "DEVELOP 1", thai: "พัฒนา", color: { bg: "#E1F5EE", text: "#085041", textSub: "#0F6E56", border: "#1D9E75", bgDark: "#0A3A2E", textDark: "#9FE1CB" }, desc: "โครงสร้างเรื่อง + ตัวละคร", focus: "Structure is character. Character is structure.", units: ["10104"], deliverables: ["Plot Outline", "Character Bible"], topics: ["Three-Act Structure", "Hero's Journey 12 ขั้น", "Turning Points + Climax", "ตัวละคร 4 มิติ (Egri)", "Character Arc 3 แบบ", "Want vs Need", "Conflict 3 ระดับ"], books: ["Seger (2010)", "Tabb (2014)", "Alessandra (2010)", "Field (2005)", "Vogler (2007)", "Egri (1946)", "McKee (1997)"] },
+  { id: 3, theme: "DEVELOP 2", thai: "ขยาย", color: { bg: "#FAECE7", text: "#712B13", textSub: "#993C1D", border: "#D85A30", bgDark: "#5A1F0E", textDark: "#F5C4B3" }, desc: "บทขยาย + บทรายฉาก", focus: "ฉากคือเรื่องย่อๆ ที่ต้องมี Reversal", units: ["10201", "10202"], deliverables: ["Treatment", "Scenario"], topics: ["Beat / Scene / Sequence", "Scene Design 4 องค์ประกอบ", "Treatment (prose narrative)", "Scenario (รายการฉาก)", "Linear vs Non-linear"], books: ["Mercurio (2018)", "Alessandra (2010)", "Seger (2010)", "Frost (2014)", "Riley (2009)"] },
+  { id: 4, theme: "DELIVER", thai: "ส่งมอบ", color: { bg: "#FAEEDA", text: "#633806", textSub: "#854F0B", border: "#BA7517", bgDark: "#4A2A04", textDark: "#FAC775" }, desc: "เขียนบทตามรูปแบบงาน", focus: "Format is not decoration. Format is communication.", units: ["10203", "10204", "10205"], deliverables: ["Full Scene Script (3-5 หน้า)"], topics: ["6 องค์ประกอบมาตรฐาน", "TV / Film / Stage Format", "Dialogue + Subtext", "Visual Language", "Show Don't Tell"], books: ["Riley (2009)", "Mercurio (2018)", "Smethurst (2017)", "Straczynski (1996)"] },
+  { id: 5, theme: "DEPLOY", thai: "เผยแพร่", color: { bg: "#E6F1FB", text: "#0C447C", textSub: "#185FA5", border: "#378ADD", bgDark: "#0A2E54", textDark: "#B5D4F4" }, desc: "นำเสนอผลงาน + ประเมินสมรรถนะ", focus: "เล่าเรื่องใน 30 วินาทีไม่ได้ ก็ขายไม่ได้", units: ["บูรณาการทุกหน่วย"], deliverables: ["Portfolio รวม + Pitch + Reflection"], topics: ["Pitch 6 ขั้น (5-10 นาที)", "Portfolio (6 ชิ้น)", "Reflective Practitioner", "Q&A + Feedback", "เส้นทางสู่ TPQI ระดับ 5"], books: ["Alessandra (2010)", "Lerch (1999)", "Schön (1983)"] }
+];
+
+const modules = [
+  { num: 1, title: "สร้างแนวความคิดหลัก + เตรียมข้อมูล", color: days[0].color, core: "Tabb เชื่อว่ากระบวนการก่อนเขียน (prewriting) คือขั้นตอนสำคัญที่สุดและถูกละเลยมากที่สุด หลักสูตรจัดเรียงเนื้อหาจากนามธรรม (Theme) ไปสู่รูปธรรม (Logline) ตามหลัก Pedagogy", connect: "Core Idea Sheet จะกลายเป็นวัตถุดิบของโมดูล 2 — Theme กำหนด Character Arc และ Premise ขยายเป็น Plot Outline" },
+  { num: 2, title: "โครงสร้างเรื่องและตัวละคร", color: days[1].color, core: "ใช้ Field เป็นรากฐานโครงสร้าง 3 องก์ + Vogler เสริม Hero's Journey + Egri/McKee/Tabb สำหรับตัวละคร โดยมองว่าโครงเรื่องและตัวละครเป็นด้านสองของเหรียญเดียว", connect: "Plot Outline เป็นโครงให้ Treatment ในโมดูล 3 และ Character Bible กำหนด Voice ของตัวละครใน Dialogue ของโมดูล 4" },
+  { num: 3, title: "บทขยายโครงเรื่องและบทรายฉาก", color: days[2].color, core: "ใช้ Mercurio เป็นแกน — เน้น micro-structure ในระดับฉากที่ตำราส่วนใหญ่ละเลย ซึ่งเป็นจุดแยกมือใหม่กับมืออาชีพ", connect: "Scenario เป็นโครงร่างของ Full Scene Script ในโมดูล 4 — 1 ฉากจาก Scenario จะถูกขยายเป็นบทฉบับเต็ม 3-5 หน้า" },
+  { num: 4, title: "เขียนบทตามรูปแบบงาน", color: days[3].color, core: "ใช้ Riley เป็นแกน Format มาตรฐาน + แยกตามรูปแบบที่ผู้เรียนเลือก (TV/Film/Stage) + Mercurio สำหรับ Dialogue และ Visual Language", connect: "Full Scene Script เป็น Deliverable ตัวสุดท้ายก่อนรวม Portfolio และเป็นหลักฐานสำคัญในการประเมินหน่วยทางเลือก 10203/10204/10205" },
+  { num: 5, title: "นำเสนอผลงาน + ประเมินสมรรถนะ", color: days[4].color, core: "ใช้ Alessandra + Lerch สำหรับ Pitch + Schön สำหรับ Reflection เพื่อบูรณาการทุกอย่างเข้าด้วยกันและเตรียมพร้อมสู่การประเมิน TPQI", connect: "Portfolio 6 ชิ้นใช้เป็นหลักฐานเชิงประจักษ์ (Performance Evidence) ยื่นประเมินคุณวุฒิวิชาชีพ TPQI ระดับ 4 ได้โดยตรง" }
+];
+
+const books = [
+  { name: "Tabb (2014)", title: "Prewriting Your Screenplay", cat: "core", role: "สูตร Premise + Character Creation", uses: [1, 2] },
+  { name: "Alessandra (2010)", title: "The Coffee Break Screenwriter", cat: "core", role: "Take Ten + Logline + Pitch — ใช้ตลอดหลักสูตร", uses: [1, 2, 3, 5] },
+  { name: "Seger (2010)", title: "Making a Good Script Great", cat: "core", role: "Three-Act + Turning Points + Subplot", uses: [2, 3] },
+  { name: "Mercurio (2018)", title: "The Craft of Scene Writing", cat: "core", role: "Beat / Scene / Sequence + Dialogue + Visual", uses: [2, 3, 4] },
+  { name: "Riley (2009)", title: "The Hollywood Standard", cat: "core", role: "รูปแบบบทมาตรฐานอุตสาหกรรม", uses: [3, 4] },
+  { name: "Smethurst (2017)", title: "How to Write for Television", cat: "format", role: "TV-Series Format (10203)", uses: [4] },
+  { name: "Straczynski (1996)", title: "The Complete Book of Scriptwriting", cat: "format", role: "ครบทุกรูปแบบ TV / Film / Stage", uses: [4] },
+  { name: "Field (2005)", title: "Screenplay: The Foundations", cat: "classic", role: "ผู้ทำให้ Three-Act เป็นระบบ", uses: [2] },
+  { name: "Vogler (2007)", title: "The Writer's Journey", cat: "classic", role: "Hero's Journey 12 ขั้น", uses: [2] },
+  { name: "Egri (1946)", title: "The Art of Dramatic Writing", cat: "classic", role: "ตัวละคร 3 มิติ — รากฐานคลาสสิก", uses: [2] },
+  { name: "McKee (1997)", title: "Story", cat: "classic", role: "Want vs Need", uses: [2] },
+  { name: "Campbell (1949)", title: "The Hero with a Thousand Faces", cat: "classic", role: "Monomyth ต้นฉบับของ Hero's Journey", uses: [2] },
+  { name: "Krevolin (2003)", title: "How to Adapt Anything", cat: "support", role: "Research 4 ประเภท + Adaptation", uses: [1] },
+  { name: "Lerch (1999)", title: "500 Ways to Beat the Script Reader", cat: "support", role: "Logline 30 วินาที + Pitching", uses: [1, 5] },
+  { name: "Johnson (2009)", title: "A Story is a Promise", cat: "support", role: "Story Promise + Theme เชิงลึก", uses: [1] },
+  { name: "Frost (2014)", title: "How to Write a Film Script", cat: "support", role: "Treatment + Outline สำหรับผู้เริ่มต้น", uses: [3] },
+  { name: "Howard & Mabley (1995)", title: "The Tools of Screenwriting", cat: "support", role: "Eight-Sequence Structure (Frank Daniel)", uses: [3] },
+  { name: "Schön (1983)", title: "The Reflective Practitioner", cat: "support", role: "Reflection-in-Action + on-Action", uses: [5] },
+  { name: "Field (1994)", title: "Four Screenplays", cat: "support", role: "วิเคราะห์บทจริง 4 เรื่อง", uses: [2] }
+];
+
+const matrix = [
+  { dayLabel: "วัน 1", module: "M1: Core Idea + Research", units: "10101, 10102", deliverables: "#1 Core Idea Sheet, #2 Research Brief", anchor: "Tabb (2014) Part 1 · Alessandra (2010) Ch.1" },
+  { dayLabel: "วัน 2", module: "M2: Plot + Character", units: "10104", deliverables: "#3 Plot Outline + Character Bible", anchor: "Seger (2010) Ch.1-3 · Tabb (2014) Part 2" },
+  { dayLabel: "วัน 3", module: "M3: Treatment + Scenario", units: "10201, 10202", deliverables: "#4 Treatment, #5 Scenario", anchor: "Mercurio (2018) Part 1 · Alessandra (2010) Ch.3" },
+  { dayLabel: "วัน 4", module: "M4: Format + Full Scene", units: "10203 / 10204 / 10205", deliverables: "#6 Full Scene Script", anchor: "Riley (2009) · Smethurst / Straczynski" },
+  { dayLabel: "วัน 5", module: "M5: Pitch + Final Presentation", units: "บูรณาการทุกหน่วย", deliverables: "Portfolio + Pitch + Reflection", anchor: "Alessandra (2010) Ch.10-11 · Lerch (1999)" }
+];
+
+const isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+function getColors(c) {
+  if (isDark) return { bg: c.bgDark, text: c.textDark, border: c.border };
+  return { bg: c.bg, text: c.text, border: c.border, textSub: c.textSub };
+}
+
+const timeline = document.getElementById('timeline');
+days.forEach(d => {
+  const card = document.createElement('div');
+  card.className = 'day-card';
+  card.dataset.day = d.id;
+  card.innerHTML = `<div class="day-num">วันที่ ${d.id}</div><div class="day-theme">${d.theme}</div><div class="day-thai">${d.thai}</div>`;
+  card.addEventListener('click', () => showDay(d.id));
+  timeline.appendChild(card);
+});
+
+function showDay(id) {
+  const d = days.find(x => x.id === id);
+  const c = getColors(d.color);
+  document.querySelectorAll('.day-card').forEach(card => {
+    if (parseInt(card.dataset.day) === id) {
+      card.style.background = c.bg;
+      card.style.borderColor = c.border;
+      card.style.color = c.text;
+    } else {
+      card.style.background = '';
+      card.style.borderColor = '';
+      card.style.color = '';
+    }
+  });
+  const detail = document.getElementById('day-detail');
+  detail.innerHTML = `
+    <div class="detail-head">
+      <div>
+        <div class="detail-tag" style="color: ${isDark ? c.text : d.color.textSub};">วันที่ ${d.id} · ${d.theme}</div>
+        <div class="detail-title">${d.desc}</div>
+      </div>
+      <div style="background: ${c.bg}; color: ${c.text}; padding: 5px 12px; border-radius: var(--radius-md); font-size: 12px; font-weight: 500;">หน่วยสมรรถนะ ${d.units.join(', ')}</div>
+    </div>
+    <div class="detail-quote" style="border-left-color: ${c.border};">"${d.focus}"</div>
+    <div class="detail-grid">
+      <div>
+        <h4>หัวข้อหลัก</h4>
+        <ul>${d.topics.map(t => `<li>${t}</li>`).join('')}</ul>
+      </div>
+      <div>
+        <h4>ผลงานที่ต้องส่ง</h4>
+        <ul>${d.deliverables.map(t => `<li>${t}</li>`).join('')}</ul>
+        <h4>ตำราอ้างอิง</h4>
+        <div class="badge-list">${d.books.map(b => `<span class="badge">${b}</span>`).join('')}</div>
+      </div>
+    </div>
+  `;
+}
+showDay(1);
+
+const mGrid = document.getElementById('modules-grid');
+modules.forEach(m => {
+  const c = getColors(m.color);
+  const card = document.createElement('div');
+  card.className = 'module-card';
+  card.innerHTML = `
+    <div class="module-head">
+      <div class="module-num" style="background: ${c.bg}; color: ${c.text};">${m.num}</div>
+      <div class="module-title">${m.title}</div>
+    </div>
+    <div class="section-label">แก่นความคิด</div>
+    <div class="section-text">${m.core}</div>
+    <div class="section-label">การเชื่อมโยงไปโมดูลถัดไป</div>
+    <div class="connect-box" style="background: ${c.bg}; color: ${c.text};">${m.connect}</div>
+  `;
+  mGrid.appendChild(card);
+});
+
+const bGrid = document.getElementById('books-grid');
+const catLabels = { core: "หลัก", format: "รูปแบบ", classic: "คลาสสิก", support: "เสริม" };
+const catColors = {
+  core: days[1].color,
+  format: days[3].color,
+  classic: days[0].color,
+  support: { bg: "#F1EFE8", text: "#444441", border: "#888780", bgDark: "#3A3A38", textDark: "#D3D1C7" }
+};
+function renderBooks(filter) {
+  bGrid.innerHTML = '';
+  const list = filter === 'all' ? books : books.filter(b => b.cat === filter);
+  list.forEach(b => {
+    const c = getColors(catColors[b.cat]);
+    const card = document.createElement('div');
+    card.className = 'book-card';
+    card.innerHTML = `
+      <div class="book-info">
+        <div class="book-head">
+          <span class="book-name">${b.name}</span>
+          <span class="book-cat-pill" style="background: ${c.bg}; color: ${c.text};">${catLabels[b.cat]}</span>
+        </div>
+        <div class="book-title">${b.title}</div>
+        <div class="book-role">${b.role}</div>
+      </div>
+      <div class="book-uses">${b.uses.map(u => 'M' + u).join(' · ')}</div>
+    `;
+    bGrid.appendChild(card);
+  });
+}
+renderBooks('all');
+
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderBooks(btn.dataset.filter);
+  });
+});
+
+const matGrid = document.getElementById('matrix-grid');
+matrix.forEach((m, i) => {
+  const d = days[i];
+  const c = getColors(d.color);
+  const row = document.createElement('div');
+  row.className = 'matrix-card matrix-row';
+  row.innerHTML = `
+    <div class="matrix-head">
+      <span class="matrix-day-pill" style="background: ${c.bg}; color: ${c.text};">${m.dayLabel}</span>
+      <span style="font-size: 14px; font-weight: 500;">${m.module}</span>
+    </div>
+    <div class="matrix-grid">
+      <div><div>หน่วยสมรรถนะ</div><div>${m.units}</div></div>
+      <div><div>Deliverable</div><div>${m.deliverables}</div></div>
+      <div><div>ตำราหลัก</div><div>${m.anchor}</div></div>
+    </div>
+  `;
+  matGrid.appendChild(row);
+});
+
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    document.getElementById('panel-' + btn.dataset.tab).classList.add('active');
+  });
+});
+</script>
+</body>
+</html>
