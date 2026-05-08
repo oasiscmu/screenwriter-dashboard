@@ -261,6 +261,321 @@
     font-size: 13px;
     line-height: 1.7;
   }
+  .evidence-section {
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 0.5px dashed var(--border);
+  }
+  .evidence-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+  .evidence-icon { font-size: 14px; }
+  .evidence-title {
+    font-size: 12px;
+    color: var(--text-2);
+    font-weight: 500;
+  }
+  .unit-row {
+    margin-bottom: 10px;
+    padding: 10px 12px;
+    background: var(--surface-2);
+    border-radius: var(--radius-md);
+  }
+  .unit-row:last-of-type { margin-bottom: 8px; }
+  .unit-head {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+    flex-wrap: wrap;
+  }
+  .unit-code {
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: var(--radius-md);
+    font-weight: 500;
+    font-family: 'Courier New', monospace;
+  }
+  .unit-name {
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .unit-detail {
+    font-size: 12px;
+    line-height: 1.7;
+    color: var(--text);
+  }
+  .unit-detail > div { margin-bottom: 2px; }
+  .unit-label {
+    color: var(--text-2);
+    font-size: 11px;
+    margin-right: 4px;
+  }
+  .rubric-note {
+    margin-top: 8px;
+    padding: 8px 12px;
+    border-left: 2px solid var(--border-strong);
+    font-size: 12px;
+    color: var(--text-2);
+    line-height: 1.6;
+  }
+  .rubric-note strong { color: var(--text); }
+  .summary-card {
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+    margin-bottom: 10px;
+  }
+  .summary-head {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 0.5px solid var(--border);
+  }
+  .summary-icon { font-size: 24px; }
+  .summary-title {
+    font-size: 17px;
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+  .summary-sub {
+    font-size: 12px;
+    color: var(--text-2);
+  }
+  .summary-section-label {
+    font-size: 12px;
+    color: var(--text-2);
+    margin: 16px 0 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .conditions {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+  .cond-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 2fr;
+    gap: 12px;
+    padding: 10px 12px;
+    background: var(--surface-2);
+    border-radius: var(--radius-md);
+    align-items: center;
+    font-size: 13px;
+  }
+  .cond-label { font-weight: 500; }
+  .cond-value {
+    font-family: 'Courier New', monospace;
+    font-weight: 500;
+    text-align: center;
+  }
+  .cond-note {
+    font-size: 12px;
+    color: var(--text-2);
+  }
+  .weight-chart {
+    display: flex;
+    width: 100%;
+    height: 56px;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 0.5px solid var(--border);
+  }
+  .weight-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    transition: opacity 0.15s;
+  }
+  .weight-bar:hover { opacity: 0.85; }
+  .weight-label {
+    font-size: 11px;
+    line-height: 1.3;
+    padding: 4px;
+  }
+  .weight-label strong { font-size: 14px; }
+  .rubric-table {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+  .rubric-row {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 12px;
+    padding: 8px 12px;
+    background: var(--surface-2);
+    border-radius: var(--radius-md);
+    font-size: 13px;
+  }
+  .rubric-pass {
+    background: rgba(29, 158, 117, 0.08);
+    border-left: 3px solid #1D9E75;
+  }
+  .rubric-level { font-weight: 500; }
+  .rubric-desc { color: var(--text-2); font-size: 12px; }
+  .summary-footer {
+    margin-top: 1rem;
+    padding: 12px 14px;
+    background: var(--surface-2);
+    border-radius: var(--radius-md);
+    font-size: 13px;
+    line-height: 1.7;
+    text-align: center;
+    color: var(--text-2);
+  }
+  .summary-footer strong { color: var(--text); }
+  .test-divider {
+    margin: 1.5rem 0 0;
+    border-top: 0.5px dashed var(--border);
+  }
+  .test-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .test-card {
+    padding: 14px 16px;
+    border-radius: var(--radius-md);
+    border: 0.5px solid var(--border);
+  }
+  .test-pretest {
+    background: rgba(127, 119, 221, 0.06);
+    border-color: rgba(127, 119, 221, 0.3);
+  }
+  .test-posttest {
+    background: rgba(29, 158, 117, 0.06);
+    border-color: rgba(29, 158, 117, 0.3);
+  }
+  .test-card-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .test-badge {
+    background: rgba(127, 119, 221, 0.15);
+    color: #534AB7;
+    padding: 4px 10px;
+    border-radius: var(--radius-md);
+    font-size: 12px;
+    font-weight: 500;
+  }
+  .test-badge-pass {
+    background: rgba(29, 158, 117, 0.15);
+    color: #0F6E56;
+  }
+  @media (prefers-color-scheme: dark) {
+    .test-badge { background: rgba(127, 119, 221, 0.25); color: #CECBF6; }
+    .test-badge-pass { background: rgba(29, 158, 117, 0.25); color: #9FE1CB; }
+  }
+  .test-day {
+    font-size: 11px;
+    color: var(--text-2);
+    font-family: 'Courier New', monospace;
+  }
+  .test-info {
+    font-size: 12px;
+    line-height: 1.8;
+  }
+  .test-info > div { margin-bottom: 2px; }
+  .test-label {
+    color: var(--text-2);
+    margin-right: 4px;
+  }
+  .test-passing-no {
+    color: var(--text-2);
+  }
+  .test-passing-yes {
+    color: #0F6E56;
+    font-weight: 500;
+  }
+  @media (prefers-color-scheme: dark) {
+    .test-passing-yes { color: #9FE1CB; }
+  }
+  .test-purpose {
+    margin-top: 6px;
+    padding-top: 6px;
+    border-top: 0.5px solid var(--border);
+    color: var(--text-2);
+    font-size: 11px;
+    line-height: 1.5;
+  }
+  .unit-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .unit-bar-row {
+    display: grid;
+    grid-template-columns: 80px 1fr 100px 50px;
+    gap: 10px;
+    align-items: center;
+    font-size: 12px;
+  }
+  .unit-bar-code {
+    font-family: 'Courier New', monospace;
+    font-weight: 500;
+    color: var(--text-2);
+  }
+  .unit-bar-name { font-size: 12px; }
+  .unit-bar-track {
+    height: 8px;
+    background: var(--surface-2);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .unit-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #1D9E75, #378ADD);
+    border-radius: 4px;
+  }
+  .unit-bar-count {
+    text-align: right;
+    color: var(--text-2);
+    font-size: 12px;
+  }
+  .subj-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+  .subj-item {
+    padding: 10px 14px;
+    background: var(--surface-2);
+    border-radius: var(--radius-md);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+  }
+  .subj-name { font-weight: 500; }
+  .subj-points {
+    color: var(--text-2);
+    font-family: 'Courier New', monospace;
+  }
+  .rules-list {
+    margin: 0;
+    padding: 12px 14px 12px 32px;
+    background: var(--surface-2);
+    border-radius: var(--radius-md);
+    font-size: 12px;
+    line-height: 1.8;
+    color: var(--text-2);
+  }
+  .rules-list li { margin-bottom: 2px; }
   .filter-bar {
     display: flex;
     gap: 6px;
@@ -366,6 +681,25 @@
     .detail-grid { grid-template-columns: 1fr; }
     .matrix-grid { grid-template-columns: 1fr; }
     .stat .value { font-size: 22px; }
+    .cond-row {
+      grid-template-columns: 1fr;
+      gap: 4px;
+    }
+    .cond-value { text-align: left; }
+    .weight-chart { height: 48px; }
+    .weight-label strong { font-size: 12px; }
+    .weight-label { font-size: 10px; }
+    .rubric-row {
+      grid-template-columns: 1fr;
+      gap: 2px;
+    }
+    .test-cards { grid-template-columns: 1fr; }
+    .unit-bar-row {
+      grid-template-columns: 70px 1fr 50px;
+      gap: 8px;
+    }
+    .unit-bar-name { display: none; }
+    .subj-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -437,12 +771,117 @@ const days = [
 ];
 
 const modules = [
-  { num: 1, title: "สร้างแนวความคิดหลัก + เตรียมข้อมูล", color: days[0].color, core: "Tabb เชื่อว่ากระบวนการก่อนเขียน (prewriting) คือขั้นตอนสำคัญที่สุดและถูกละเลยมากที่สุด หลักสูตรจัดเรียงเนื้อหาจากนามธรรม (Theme) ไปสู่รูปธรรม (Logline) ตามหลัก Pedagogy", connect: "Core Idea Sheet จะกลายเป็นวัตถุดิบของโมดูล 2 — Theme กำหนด Character Arc และ Premise ขยายเป็น Plot Outline" },
-  { num: 2, title: "โครงสร้างเรื่องและตัวละคร", color: days[1].color, core: "ใช้ Field เป็นรากฐานโครงสร้าง 3 องก์ + Vogler เสริม Hero's Journey + Egri/McKee/Tabb สำหรับตัวละคร โดยมองว่าโครงเรื่องและตัวละครเป็นด้านสองของเหรียญเดียว", connect: "Plot Outline เป็นโครงให้ Treatment ในโมดูล 3 และ Character Bible กำหนด Voice ของตัวละครใน Dialogue ของโมดูล 4" },
-  { num: 3, title: "บทขยายโครงเรื่องและบทรายฉาก", color: days[2].color, core: "ใช้ Mercurio เป็นแกน — เน้น micro-structure ในระดับฉากที่ตำราส่วนใหญ่ละเลย ซึ่งเป็นจุดแยกมือใหม่กับมืออาชีพ", connect: "Scenario เป็นโครงร่างของ Full Scene Script ในโมดูล 4 — 1 ฉากจาก Scenario จะถูกขยายเป็นบทฉบับเต็ม 3-5 หน้า" },
-  { num: 4, title: "เขียนบทตามรูปแบบงาน", color: days[3].color, core: "ใช้ Riley เป็นแกน Format มาตรฐาน + แยกตามรูปแบบที่ผู้เรียนเลือก (TV/Film/Stage) + Mercurio สำหรับ Dialogue และ Visual Language", connect: "Full Scene Script เป็น Deliverable ตัวสุดท้ายก่อนรวม Portfolio และเป็นหลักฐานสำคัญในการประเมินหน่วยทางเลือก 10203/10204/10205" },
-  { num: 5, title: "นำเสนอผลงาน + ประเมินสมรรถนะ", color: days[4].color, core: "ใช้ Alessandra + Lerch สำหรับ Pitch + Schön สำหรับ Reflection เพื่อบูรณาการทุกอย่างเข้าด้วยกันและเตรียมพร้อมสู่การประเมิน TPQI", connect: "Portfolio 6 ชิ้นใช้เป็นหลักฐานเชิงประจักษ์ (Performance Evidence) ยื่นประเมินคุณวุฒิวิชาชีพ TPQI ระดับ 4 ได้โดยตรง" }
+  { num: 1, title: "สร้างแนวความคิดหลัก + เตรียมข้อมูล", color: days[0].color,
+    core: "Tabb เชื่อว่ากระบวนการก่อนเขียน (prewriting) คือขั้นตอนสำคัญที่สุดและถูกละเลยมากที่สุด หลักสูตรจัดเรียงเนื้อหาจากนามธรรม (Theme) ไปสู่รูปธรรม (Logline) ตามหลัก Pedagogy",
+    connect: "Core Idea Sheet จะกลายเป็นวัตถุดิบของโมดูล 2 — Theme กำหนด Character Arc และ Premise ขยายเป็น Plot Outline",
+    units: [
+      { code: "10101", name: "สร้างแนวความคิดหลัก (Core Idea)", elements: "Theme · Concept · Premise · Genre · Mood · Logline", evidence: "Core Idea Sheet (Deliverable #1)" },
+      { code: "10102", name: "เตรียมข้อมูลเพื่อการสร้างบท", elements: "ค้นหา + คัดกรองข้อมูล 4 ประเภท + APA", evidence: "Research Brief (Deliverable #2)" }
+    ],
+    rubricNote: "ต้องได้ Proficient (3) ขึ้นไปในทุกมิติ — Theme · Concept · Premise · Logline · Research"
+  },
+  { num: 2, title: "โครงสร้างเรื่องและตัวละคร", color: days[1].color,
+    core: "ใช้ Field เป็นรากฐานโครงสร้าง 3 องก์ + Vogler เสริม Hero's Journey + Egri/McKee/Tabb สำหรับตัวละคร โดยมองว่าโครงเรื่องและตัวละครเป็นด้านสองของเหรียญเดียว",
+    connect: "Plot Outline เป็นโครงให้ Treatment ในโมดูล 3 และ Character Bible กำหนด Voice ของตัวละครใน Dialogue ของโมดูล 4",
+    units: [
+      { code: "10104", name: "เขียนโครงเรื่อง (Plot)", elements: "Three-Act + Beat Sheet + Character 4 มิติ + Arc + Want/Need + Conflict", evidence: "Plot Outline + Character Bible (Deliverable #3)" }
+    ],
+    rubricNote: "ต้องได้ Proficient (3) ขึ้นไปทุกมิติ · Plot ที่มี plot hole ห้ามผ่าน"
+  },
+  { num: 3, title: "บทขยายโครงเรื่องและบทรายฉาก", color: days[2].color,
+    core: "ใช้ Mercurio เป็นแกน — เน้น micro-structure ในระดับฉากที่ตำราส่วนใหญ่ละเลย ซึ่งเป็นจุดแยกมือใหม่กับมืออาชีพ",
+    connect: "Scenario เป็นโครงร่างของ Full Scene Script ในโมดูล 4 — 1 ฉากจาก Scenario จะถูกขยายเป็นบทฉบับเต็ม 3-5 หน้า",
+    units: [
+      { code: "10201", name: "สร้างบทขยายโครงเรื่อง (Treatment)", elements: "Sequence/Scene/Beat + Scene Design + Treatment", evidence: "Treatment 2-3 หน้า (Deliverable #4)" },
+      { code: "10202", name: "เขียนบทรายฉาก (Scenario)", elements: "แบ่งรายฉาก + Scene Heading + Timeline", evidence: "Scenario 5 ฉากแรก (Deliverable #5)" }
+    ],
+    rubricNote: "ต้องได้ Proficient (3) ขึ้นไปทุกมิติ · Treatment ที่มี plot hole หรือฉากที่ไม่มี Reversal ห้ามผ่าน"
+  },
+  { num: 4, title: "เขียนบทตามรูปแบบงาน", color: days[3].color,
+    core: "ใช้ Riley เป็นแกน Format มาตรฐาน + แยกตามรูปแบบที่ผู้เรียนเลือก (TV/Film/Stage) + Mercurio สำหรับ Dialogue และ Visual Language",
+    connect: "Full Scene Script เป็น Deliverable ตัวสุดท้ายก่อนรวม Portfolio และเป็นหลักฐานสำคัญในการประเมินหน่วยทางเลือก 10203/10204/10205",
+    units: [
+      { code: "10203", name: "เขียนบทละครและซีรีส์ (ทางเลือก)", elements: "TV Format · Cold Open · Acts · Cliffhanger", evidence: "Full Scene Script — TV format (Deliverable #6)" },
+      { code: "10204", name: "เขียนบทภาพยนตร์ (ทางเลือก)", elements: "Feature Format · 90-120 หน้า · 1 หน้า ≈ 1 นาที", evidence: "Full Scene Script — Film format (Deliverable #6)" },
+      { code: "10205", name: "เขียนบทละครเวที (ทางเลือก)", elements: "Stage Format · Acts/Scenes · Stage Directions", evidence: "Full Scene Script — Stage format (Deliverable #6)" }
+    ],
+    rubricNote: "เลือก 1 หน่วยทางเลือก · บทที่ผิดรูปแบบมาตรฐานหรือมี on-the-nose dialogue ทั้งฉาก ห้ามผ่าน"
+  },
+  { num: 5, title: "นำเสนอผลงาน + ประเมินสมรรถนะ", color: days[4].color,
+    core: "ใช้ Alessandra + Lerch สำหรับ Pitch + Schön สำหรับ Reflection เพื่อบูรณาการทุกอย่างเข้าด้วยกันและเตรียมพร้อมสู่การประเมิน TPQI",
+    connect: "Portfolio 6 ชิ้นใช้เป็นหลักฐานเชิงประจักษ์ (Performance Evidence) ยื่นประเมินคุณวุฒิวิชาชีพ TPQI ระดับ 4 ได้โดยตรง",
+    units: [
+      { code: "บูรณาการ", name: "นำเสนอผลงาน + ประเมินสมรรถนะ", elements: "Pitch 6 ขั้น + Portfolio + Reflection", evidence: "Portfolio รวม + Pitch + Reflection Sheet" }
+    ],
+    rubricNote: "ต้องได้ Proficient (3) ขึ้นไปทั้ง Pitch · Portfolio · Reception · Reflection · Participation"
+  }
 ];
+
+const passingCriteria = {
+  conditions: [
+    { label: "เข้าร่วมการอบรม", value: "≥ 80%", note: "ทั้งภาคทฤษฎีและปฏิบัติ" },
+    { label: "คะแนนภาคทฤษฎี (Post-test)", value: "≥ 70%", note: "น้ำหนัก 30% ของคะแนนรวม" },
+    { label: "คะแนนภาคปฏิบัติ", value: "≥ 70%", note: "ชิ้นงาน 50% + นำเสนอ 20%" },
+    { label: "คะแนนเฉลี่ยรวม", value: "≥ 70%", note: "ทุกส่วนรวมกัน" }
+  ],
+  weights: [
+    { label: "ทฤษฎี (Post-test)", value: 30, color: "#7F77DD" },
+    { label: "ชิ้นงาน Portfolio", value: 50, color: "#1D9E75" },
+    { label: "การนำเสนอ", value: 20, color: "#378ADD" }
+  ],
+  rubricLevels: [
+    { level: "1 — Beginner", desc: "ยังไม่ผ่านเกณฑ์ ต้องแก้ไข" },
+    { level: "2 — Developing", desc: "พัฒนาแล้ว แต่ยังไม่ผ่าน" },
+    { level: "3 — Proficient", desc: "ผ่านเกณฑ์ขั้นต่ำ ✓" },
+    { level: "4 — Advanced", desc: "เกินเกณฑ์ โดดเด่น" }
+  ],
+  tests: {
+    pretest: {
+      day: "วันที่ 1 · 09:00-09:30",
+      items: "20 ข้อปรนัย",
+      time: "30 นาที",
+      score: "30 คะแนน (ข้อละ 1.5)",
+      passing: "ไม่ใช้ตัดสินผ่าน/ไม่ผ่าน",
+      purpose: "วัด baseline เพื่อเปรียบเทียบ Gain Score",
+      isPass: false
+    },
+    posttest: {
+      day: "วันที่ 5 · 15:45-16:15",
+      items: "20 ปรนัย + 1 อัตนัย",
+      time: "60 นาที (ปรนัย 40 + อัตนัย 20)",
+      score: "30 คะแนน (ปรนัย 20 + อัตนัย 10)",
+      passing: "≥ 70% (≥ 21/30 คะแนน)",
+      purpose: "ใช้ตัดสินผ่าน/ไม่ผ่านส่วนทฤษฎี (น้ำหนัก 30%)",
+      isPass: true
+    },
+    bloomDistribution: [
+      { level: "Apply (ประยุกต์ใช้)", value: 60, color: "#1D9E75" },
+      { level: "Analyze (วิเคราะห์)", value: 25, color: "#378ADD" },
+      { level: "Understand (เข้าใจ)", value: 15, color: "#7F77DD" }
+    ],
+    subjectiveBreakdown: [
+      { item: "Logline", points: 2 },
+      { item: "Theme + Concept", points: 2 },
+      { item: "Plot Outline 3 องก์", points: 4 },
+      { item: "Scene Design ฉากเปิด", points: 2 }
+    ],
+    unitDistribution: [
+      { code: "10101", name: "Core Idea", count: 4 },
+      { code: "10102", name: "Research", count: 2 },
+      { code: "10104", name: "Plot + Character", count: 5 },
+      { code: "10201", name: "Treatment", count: 3 },
+      { code: "10202", name: "Scenario", count: 2 },
+      { code: "10203/4/5", name: "Format + Dialogue", count: 3 },
+      { code: "M5", name: "Pitch", count: 1 }
+    ],
+    rules: [
+      "ใช้ปากกาสีดำหรือน้ำเงินเท่านั้น (ห้ามใช้ดินสอ)",
+      "ห้ามนำเอกสาร ตำรา หรือเครื่องมือสื่อสารใดๆ เข้าห้องสอบ",
+      "ส่งแบบทดสอบเมื่อหมดเวลา หรือทำเสร็จก่อนเวลา",
+      "ตอบตามความเข้าใจอย่างซื่อสัตย์"
+    ]
+  }
+};
 
 const books = [
   { name: "Tabb (2014)", title: "Prewriting Your Screenplay", cat: "core", role: "สูตร Premise + Character Creation", uses: [1, 2] },
@@ -536,6 +975,18 @@ modules.forEach(m => {
   const c = getColors(m.color);
   const card = document.createElement('div');
   card.className = 'module-card';
+  const unitsHtml = m.units.map(u => `
+    <div class="unit-row">
+      <div class="unit-head">
+        <span class="unit-code" style="background: ${c.bg}; color: ${c.text};">${u.code}</span>
+        <span class="unit-name">${u.name}</span>
+      </div>
+      <div class="unit-detail">
+        <div><span class="unit-label">Element:</span> ${u.elements}</div>
+        <div><span class="unit-label">Performance Evidence:</span> ${u.evidence}</div>
+      </div>
+    </div>
+  `).join('');
   card.innerHTML = `
     <div class="module-head">
       <div class="module-num" style="background: ${c.bg}; color: ${c.text};">${m.num}</div>
@@ -545,9 +996,138 @@ modules.forEach(m => {
     <div class="section-text">${m.core}</div>
     <div class="section-label">การเชื่อมโยงไปโมดูลถัดไป</div>
     <div class="connect-box" style="background: ${c.bg}; color: ${c.text};">${m.connect}</div>
+    <div class="evidence-section">
+      <div class="evidence-header">
+        <span class="evidence-icon">📋</span>
+        <span class="evidence-title">หน่วยสมรรถนะ TPQI · Performance Evidence</span>
+      </div>
+      ${unitsHtml}
+      <div class="rubric-note">
+        <strong>เกณฑ์ตัดสิน:</strong> ${m.rubricNote}
+      </div>
+    </div>
   `;
   mGrid.appendChild(card);
 });
+
+// เพิ่มกล่องเกณฑ์ผ่านหลักสูตรรวม
+const summaryCard = document.createElement('div');
+summaryCard.className = 'summary-card';
+const conditionsHtml = passingCriteria.conditions.map(c => `
+  <div class="cond-row">
+    <div class="cond-label">${c.label}</div>
+    <div class="cond-value">${c.value}</div>
+    <div class="cond-note">${c.note}</div>
+  </div>
+`).join('');
+const totalWeight = passingCriteria.weights.reduce((s, w) => s + w.value, 0);
+const weightsHtml = passingCriteria.weights.map(w => {
+  const pct = (w.value / totalWeight) * 100;
+  return `<div class="weight-bar" style="width: ${pct}%; background: ${w.color};" title="${w.label} ${w.value}%">
+    <span class="weight-label">${w.label}<br><strong>${w.value}%</strong></span>
+  </div>`;
+}).join('');
+const rubricHtml = passingCriteria.rubricLevels.map((r, i) => {
+  const isPass = i >= 2;
+  return `<div class="rubric-row ${isPass ? 'rubric-pass' : ''}">
+    <div class="rubric-level">${r.level}</div>
+    <div class="rubric-desc">${r.desc}</div>
+  </div>`;
+}).join('');
+
+const bloomTotal = passingCriteria.tests.bloomDistribution.reduce((s, b) => s + b.value, 0);
+const bloomHtml = passingCriteria.tests.bloomDistribution.map(b => {
+  const pct = (b.value / bloomTotal) * 100;
+  return `<div class="weight-bar" style="width: ${pct}%; background: ${b.color};" title="${b.level} ${b.value}%">
+    <span class="weight-label">${b.level}<br><strong>${b.value}%</strong></span>
+  </div>`;
+}).join('');
+
+const unitDistHtml = passingCriteria.tests.unitDistribution.map(u => {
+  const maxCount = 5;
+  const widthPct = (u.count / maxCount) * 100;
+  return `<div class="unit-bar-row">
+    <div class="unit-bar-code">${u.code}</div>
+    <div class="unit-bar-name">${u.name}</div>
+    <div class="unit-bar-track">
+      <div class="unit-bar-fill" style="width: ${widthPct}%;"></div>
+    </div>
+    <div class="unit-bar-count">${u.count} ข้อ</div>
+  </div>`;
+}).join('');
+
+const subjHtml = passingCriteria.tests.subjectiveBreakdown.map(s =>
+  `<div class="subj-item">
+    <span class="subj-name">${s.item}</span>
+    <span class="subj-points">${s.points} คะแนน</span>
+  </div>`
+).join('');
+
+const rulesHtml = passingCriteria.tests.rules.map(r => `<li>${r}</li>`).join('');
+summaryCard.innerHTML = `
+  <div class="summary-head">
+    <span class="summary-icon">🎓</span>
+    <div>
+      <div class="summary-title">ข้อมูลการผ่านหลักสูตรนักเขียนบท ระดับ 4</div>
+      <div class="summary-sub">ต้องผ่านครบทั้ง 4 เงื่อนไข + ทุก Rubric ≥ Proficient (3)</div>
+    </div>
+  </div>
+  <div class="summary-section-label">เงื่อนไขการผ่านหลักสูตร</div>
+  <div class="conditions">${conditionsHtml}</div>
+  <div class="summary-section-label">สัดส่วนน้ำหนักคะแนน</div>
+  <div class="weight-chart">${weightsHtml}</div>
+  <div class="summary-section-label">ระดับเกณฑ์ Rubric</div>
+  <div class="rubric-table">${rubricHtml}</div>
+
+  <div class="test-divider"></div>
+
+  <div class="summary-section-label">ข้อมูลแบบทดสอบ</div>
+  <div class="test-cards">
+    <div class="test-card test-pretest">
+      <div class="test-card-head">
+        <span class="test-badge">Pre-test</span>
+        <span class="test-day">${passingCriteria.tests.pretest.day}</span>
+      </div>
+      <div class="test-info">
+        <div><span class="test-label">รูปแบบ:</span> ${passingCriteria.tests.pretest.items}</div>
+        <div><span class="test-label">เวลา:</span> ${passingCriteria.tests.pretest.time}</div>
+        <div><span class="test-label">คะแนน:</span> ${passingCriteria.tests.pretest.score}</div>
+        <div class="test-passing-no"><span class="test-label">เกณฑ์ผ่าน:</span> ${passingCriteria.tests.pretest.passing}</div>
+        <div class="test-purpose">ⓘ ${passingCriteria.tests.pretest.purpose}</div>
+      </div>
+    </div>
+    <div class="test-card test-posttest">
+      <div class="test-card-head">
+        <span class="test-badge test-badge-pass">Post-test</span>
+        <span class="test-day">${passingCriteria.tests.posttest.day}</span>
+      </div>
+      <div class="test-info">
+        <div><span class="test-label">รูปแบบ:</span> ${passingCriteria.tests.posttest.items}</div>
+        <div><span class="test-label">เวลา:</span> ${passingCriteria.tests.posttest.time}</div>
+        <div><span class="test-label">คะแนน:</span> ${passingCriteria.tests.posttest.score}</div>
+        <div class="test-passing-yes"><span class="test-label">เกณฑ์ผ่าน:</span> ${passingCriteria.tests.posttest.passing}</div>
+        <div class="test-purpose">ⓘ ${passingCriteria.tests.posttest.purpose}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="summary-section-label">การกระจายข้อสอบตาม Bloom's Taxonomy (Post-test)</div>
+  <div class="weight-chart">${bloomHtml}</div>
+
+  <div class="summary-section-label">การกระจายข้อตามหน่วยสมรรถนะ</div>
+  <div class="unit-bars">${unitDistHtml}</div>
+
+  <div class="summary-section-label">โครงสร้างข้อสอบอัตนัย Post-test (10 คะแนน)</div>
+  <div class="subj-grid">${subjHtml}</div>
+
+  <div class="summary-section-label">ข้อปฏิบัติในห้องสอบ</div>
+  <ul class="rules-list">${rulesHtml}</ul>
+
+  <div class="summary-footer">
+    Portfolio 6 ชิ้นใช้เป็น <strong>Performance Evidence</strong> ยื่นประเมินคุณวุฒิวิชาชีพ TPQI ระดับ 4 ได้โดยตรง
+  </div>
+`;
+mGrid.appendChild(summaryCard);
 
 const bGrid = document.getElementById('books-grid');
 const catLabels = { core: "หลัก", format: "รูปแบบ", classic: "คลาสสิก", support: "เสริม" };
